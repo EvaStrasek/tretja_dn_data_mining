@@ -1,0 +1,118 @@
+product_id,id,date,rating,text,page
+1,chocolate-candy-box-1,2022-07-22,5,Absolutely delicious! The orange flavor is my favorite.,1
+1,chocolate-candy-box-2,2022-08-16,4,"I bought these as a gift, and they were well received. Will definitely purchase again.",1
+1,chocolate-candy-box-3,2022-09-10,5,Nice variety of flavors. The chocolate is rich and smooth.,1
+1,chocolate-candy-box-4,2022-10-02,5,The cherry flavor is amazing. Will be buying more.,1
+1,chocolate-candy-box-5,2022-11-05,4,"A bit pricey, but the quality of the chocolate is worth it.",1
+2,dark-red-potion-1,2023-02-12,4,The cherry cola flavor is very appealing. Provides a good energy boost for gaming!,1
+2,dark-red-potion-2,2023-03-14,5,"Definitely helped me stay focused during my long gaming nights. Plus, the bottle design is pretty cool.",1
+2,dark-red-potion-3,2023-04-05,5,"Great taste, and the energy kick is awesome. Feels just like a strength potion.",1
+2,dark-red-potion-4,2023-05-12,5,The cherry cola flavor is a win. Keeps me energized and focused.,1
+3,teal-potion-1,2023-02-12,5,The mint and citrus blend is very refreshing. And the bottle design is great too!,1
+3,teal-potion-2,2023-03-14,4,"I love how it gives me the energy I need for my gaming sessions. Plus, no sugar crash.",1
+3,teal-potion-3,2023-04-07,5,Really helps me focus during intense gaming marathons. The teal color is a nice touch.,1
+3,teal-potion-4,2023-05-18,5,Unique flavor and great energy boost. It's the perfect gamer's drink!,1
+4,red-potion-1,2023-02-10,5,The berry flavor is intense and delicious. Great for keeping me focused during my gaming sessions.,1
+4,red-potion-2,2023-03-20,5,"Not only does it look cool, but it tastes great and gives a good energy boost!",1
+4,red-potion-3,2023-04-09,4,It's like a health potion for gamers! The energy boost is spot on.,1
+4,red-potion-4,2023-05-17,5,Good flavor and keeps me energized. The bottle design is really fun.,1
+5,blue-energy-potion-1,2023-01-15,4,The design is just epic! And the energy boost is real.,1
+5,blue-energy-potion-2,2023-02-20,5,Perfect for long gaming nights. Love the taste and the cool bottle design.,1
+5,blue-energy-potion-3,2023-03-10,5,"Finally, an energy drink for gamers! It's just like a mana potion.",1
+5,blue-energy-potion-4,2023-04-01,4,Great taste and doesn't give me a crash afterwards.,1
+5,blue-energy-potion-5,2023-04-25,5,Really enjoyed the citrus flavor and the energy boost it gives.,1
+6,dragon-potion-1,2023-02-18,5,"The tropical flavor is really good, and the energy kick is powerful.",1
+6,dragon-potion-2,2023-03-15,5,Just what I need for long gaming sessions. Great flavor and energy boost.,1
+6,dragon-potion-3,2023-04-11,5,This potion is a game changer. Love the energy boost and the flavor.,1
+6,dragon-potion-4,2023-05-16,4,Excellent energy drink for gamers. The tropical flavor is refreshing.,1
+7,hiking-boots-outdoor-1,2022-06-15,5,These boots are fantastic for hiking. The grip on the soles is really good.,1
+7,hiking-boots-outdoor-2,2022-07-30,5,Comfortable and sturdy. Perfect for outdoor adventures.,1
+7,hiking-boots-outdoor-3,2022-08-15,4,Good quality boots. They keep my feet dry and comfortable during long hikes.,1
+7,hiking-boots-outdoor-4,2022-09-28,4,"These boots are durable and comfortable, but they're a bit heavy.",1
+7,hiking-boots-outdoor-5,2022-10-19,5,"Great boots! The size was perfect, and they're very comfortable.",1
+8,women-sandals-1,2022-06-12,5,Stylish and comfortable! I love the strappy design.,1
+8,women-sandals-2,2022-07-18,4,"These sandals look great, but they're a bit tight. Maybe they'll stretch over time.",1
+8,women-sandals-3,2022-08-03,5,Absolutely love these sandals! They're so elegant and surprisingly comfortable.,1
+8,women-sandals-4,2022-09-27,3,"The sandals are pretty, but the heel is higher than I expected.",1
+8,women-sandals-5,2022-10-14,4,"Great quality for the price. The buckle closure is secure, and the heel feels sturdy.",1
+9,men-running-shoes-1,2022-07-01,5,"Great shoes for running! Comfortable and stylish, with excellent traction.",1
+9,men-running-shoes-2,2022-07-20,4,Very happy with my purchase. These shoes provide good support for my morning jogs.,1
+9,men-running-shoes-3,2022-08-10,3,"These shoes look good, but they wore out a bit faster than I expected.",1
+9,men-running-shoes-4,2022-09-15,5,"Best running shoes I've had in a while. They're really comfortable, even on long runs.",1
+9,men-running-shoes-5,2022-10-05,4,"Good shoes, but they run a little small. I'd recommend ordering a half size up.",1
+10,kids-light-up-sneakers-1,2022-07-01,5,My daughter loves these shoes! She doesn't want to take them off. They're comfortable and the lights are a big hit.,1
+10,kids-light-up-sneakers-2,2022-07-20,5,"Bought these for my son's birthday, and they were the star of the party. Great shoes!",1
+10,kids-light-up-sneakers-3,2022-08-10,3,"Cool shoes, but the lights stopped working after a few weeks.",1
+10,kids-light-up-sneakers-4,2022-09-15,4,Comfortable and fun! My child loves showing off the light-up feature to friends.,1
+10,kids-light-up-sneakers-5,2022-10-05,4,"Nice design and the lights are bright. However, they run a bit small. Order a size up.",1
+11,classic-leather-sneakers-1,2022-06-15,5,"These shoes are not only stylish, but also super comfortable. They're perfect for any occasion!",1
+11,classic-leather-sneakers-2,2022-07-10,4,I love the classic design of these sneakers. They match well with my outfits. The leather is of top quality.,1
+11,classic-leather-sneakers-3,2022-08-07,5,I got the black ones and they look sleek. Got compliments on the first day I wore them out.,1
+11,classic-leather-sneakers-4,2022-09-12,3,They're nice shoes but they felt a little tight at first. They loosened up after a few days though.,1
+11,classic-leather-sneakers-5,2022-11-20,5,Was looking for a good pair of white sneakers and these fit the bill. Excellent quality and design.,1
+12,cat-ear-beanie-1,2022-07-15,5,"Love this Cat Ear Beanie! It's so cute and surprisingly warm. The material is so soft, and the cat ears are a nice touch!",1
+12,cat-ear-beanie-2,2022-09-20,4,"A cozy and unique beanie. Received a lot of compliments. Plus, it's cat-themed, so that's a win for me!",1
+12,cat-ear-beanie-3,2022-10-05,3,"Great beanie, but I wish there were more colors available. The cat ears design is really nice.",1
+12,cat-ear-beanie-4,2022-12-25,5,"I bought this for my daughter, and she adores it! It's become her favorite winter accessory.",1
+12,cat-ear-beanie-5,2023-01-10,4,A must-have for cat lovers. It's adorable and keeps me warm during chilly weather.,1
+13,chocolate-candy-box-1,2022-07-22,5,Absolutely delicious! The orange flavor is my favorite.,1
+13,chocolate-candy-box-2,2022-08-16,4,"I bought these as a gift, and they were well received. Will definitely purchase again.",1
+13,chocolate-candy-box-3,2022-09-10,5,Nice variety of flavors. The chocolate is rich and smooth.,1
+13,chocolate-candy-box-4,2022-10-02,5,The cherry flavor is amazing. Will be buying more.,1
+13,chocolate-candy-box-5,2022-11-05,4,"A bit pricey, but the quality of the chocolate is worth it.",1
+14,dark-red-potion-1,2023-02-12,4,The cherry cola flavor is very appealing. Provides a good energy boost for gaming!,1
+14,dark-red-potion-2,2023-03-14,5,"Definitely helped me stay focused during my long gaming nights. Plus, the bottle design is pretty cool.",1
+14,dark-red-potion-3,2023-04-05,5,"Great taste, and the energy kick is awesome. Feels just like a strength potion.",1
+14,dark-red-potion-4,2023-05-12,5,The cherry cola flavor is a win. Keeps me energized and focused.,1
+15,teal-potion-1,2023-02-12,5,The mint and citrus blend is very refreshing. And the bottle design is great too!,1
+15,teal-potion-2,2023-03-14,4,"I love how it gives me the energy I need for my gaming sessions. Plus, no sugar crash.",1
+15,teal-potion-3,2023-04-07,5,Really helps me focus during intense gaming marathons. The teal color is a nice touch.,1
+15,teal-potion-4,2023-05-18,5,Unique flavor and great energy boost. It's the perfect gamer's drink!,1
+16,red-potion-1,2023-02-10,5,The berry flavor is intense and delicious. Great for keeping me focused during my gaming sessions.,1
+16,red-potion-2,2023-03-20,5,"Not only does it look cool, but it tastes great and gives a good energy boost!",1
+16,red-potion-3,2023-04-09,4,It's like a health potion for gamers! The energy boost is spot on.,1
+16,red-potion-4,2023-05-17,5,Good flavor and keeps me energized. The bottle design is really fun.,1
+17,blue-energy-potion-1,2023-01-15,4,The design is just epic! And the energy boost is real.,1
+17,blue-energy-potion-2,2023-02-20,5,Perfect for long gaming nights. Love the taste and the cool bottle design.,1
+17,blue-energy-potion-3,2023-03-10,5,"Finally, an energy drink for gamers! It's just like a mana potion.",1
+17,blue-energy-potion-4,2023-04-01,4,Great taste and doesn't give me a crash afterwards.,1
+17,blue-energy-potion-5,2023-04-25,5,Really enjoyed the citrus flavor and the energy boost it gives.,1
+18,dragon-potion-1,2023-02-18,5,"The tropical flavor is really good, and the energy kick is powerful.",1
+18,dragon-potion-2,2023-03-15,5,Just what I need for long gaming sessions. Great flavor and energy boost.,1
+18,dragon-potion-3,2023-04-11,5,This potion is a game changer. Love the energy boost and the flavor.,1
+18,dragon-potion-4,2023-05-16,4,Excellent energy drink for gamers. The tropical flavor is refreshing.,1
+19,hiking-boots-outdoor-1,2022-06-15,5,These boots are fantastic for hiking. The grip on the soles is really good.,1
+19,hiking-boots-outdoor-2,2022-07-30,5,Comfortable and sturdy. Perfect for outdoor adventures.,1
+19,hiking-boots-outdoor-3,2022-08-15,4,Good quality boots. They keep my feet dry and comfortable during long hikes.,1
+19,hiking-boots-outdoor-4,2022-09-28,4,"These boots are durable and comfortable, but they're a bit heavy.",1
+19,hiking-boots-outdoor-5,2022-10-19,5,"Great boots! The size was perfect, and they're very comfortable.",1
+20,women-sandals-1,2022-06-12,5,Stylish and comfortable! I love the strappy design.,1
+20,women-sandals-2,2022-07-18,4,"These sandals look great, but they're a bit tight. Maybe they'll stretch over time.",1
+20,women-sandals-3,2022-08-03,5,Absolutely love these sandals! They're so elegant and surprisingly comfortable.,1
+20,women-sandals-4,2022-09-27,3,"The sandals are pretty, but the heel is higher than I expected.",1
+20,women-sandals-5,2022-10-14,4,"Great quality for the price. The buckle closure is secure, and the heel feels sturdy.",1
+21,men-running-shoes-1,2022-07-01,5,"Great shoes for running! Comfortable and stylish, with excellent traction.",1
+21,men-running-shoes-2,2022-07-20,4,Very happy with my purchase. These shoes provide good support for my morning jogs.,1
+21,men-running-shoes-3,2022-08-10,3,"These shoes look good, but they wore out a bit faster than I expected.",1
+21,men-running-shoes-4,2022-09-15,5,"Best running shoes I've had in a while. They're really comfortable, even on long runs.",1
+21,men-running-shoes-5,2022-10-05,4,"Good shoes, but they run a little small. I'd recommend ordering a half size up.",1
+22,kids-light-up-sneakers-1,2022-07-01,5,My daughter loves these shoes! She doesn't want to take them off. They're comfortable and the lights are a big hit.,1
+22,kids-light-up-sneakers-2,2022-07-20,5,"Bought these for my son's birthday, and they were the star of the party. Great shoes!",1
+22,kids-light-up-sneakers-3,2022-08-10,3,"Cool shoes, but the lights stopped working after a few weeks.",1
+22,kids-light-up-sneakers-4,2022-09-15,4,Comfortable and fun! My child loves showing off the light-up feature to friends.,1
+22,kids-light-up-sneakers-5,2022-10-05,4,"Nice design and the lights are bright. However, they run a bit small. Order a size up.",1
+23,classic-leather-sneakers-1,2022-06-15,5,"These shoes are not only stylish, but also super comfortable. They're perfect for any occasion!",1
+23,classic-leather-sneakers-2,2022-07-10,4,I love the classic design of these sneakers. They match well with my outfits. The leather is of top quality.,1
+23,classic-leather-sneakers-3,2022-08-07,5,I got the black ones and they look sleek. Got compliments on the first day I wore them out.,1
+23,classic-leather-sneakers-4,2022-09-12,3,They're nice shoes but they felt a little tight at first. They loosened up after a few days though.,1
+23,classic-leather-sneakers-5,2022-11-20,5,Was looking for a good pair of white sneakers and these fit the bill. Excellent quality and design.,1
+24,cat-ear-beanie-1,2022-07-15,5,"Love this Cat Ear Beanie! It's so cute and surprisingly warm. The material is so soft, and the cat ears are a nice touch!",1
+24,cat-ear-beanie-2,2022-09-20,4,"A cozy and unique beanie. Received a lot of compliments. Plus, it's cat-themed, so that's a win for me!",1
+24,cat-ear-beanie-3,2022-10-05,3,"Great beanie, but I wish there were more colors available. The cat ears design is really nice.",1
+24,cat-ear-beanie-4,2022-12-25,5,"I bought this for my daughter, and she adores it! It's become her favorite winter accessory.",1
+24,cat-ear-beanie-5,2023-01-10,4,A must-have for cat lovers. It's adorable and keeps me warm during chilly weather.,1
+25,chocolate-candy-box-1,2022-07-22,5,Absolutely delicious! The orange flavor is my favorite.,1
+25,chocolate-candy-box-2,2022-08-16,4,"I bought these as a gift, and they were well received. Will definitely purchase again.",1
+25,chocolate-candy-box-3,2022-09-10,5,Nice variety of flavors. The chocolate is rich and smooth.,1
+25,chocolate-candy-box-4,2022-10-02,5,The cherry flavor is amazing. Will be buying more.,1
+25,chocolate-candy-box-5,2022-11-05,4,"A bit pricey, but the quality of the chocolate is worth it.",1
