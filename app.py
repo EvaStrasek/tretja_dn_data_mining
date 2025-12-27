@@ -6,6 +6,9 @@ import pandas as pd
 import streamlit as st
 from transformers import pipeline
 
+from wordcloud import WordCloud, STOPWORDS
+import matplotlib.pyplot as plt
+
 st.set_page_config(page_title="HW3", layout="wide")
 st.title("HW3 – Web Scraping & Sentiment Analysis (2023)")
 
@@ -193,6 +196,27 @@ else:
 
     st.write("### Average confidence by sentiment")
     st.bar_chart(summary.set_index("sentiment")["confidence"])
+
+    st.write("### Word Cloud (selected month)")
+
+    # Join all review texts for the selected month
+    text_blob = " ".join(df_out["text"].astype(str).tolist()).strip()
+
+    if not text_blob:
+        st.info("No text available for word cloud.")
+    else:
+        wc = WordCloud(
+            width=800,
+            height=400,
+            background_color="white",
+            stopwords=set(STOPWORDS)  # basic English stopwords
+        ).generate(text_blob)
+
+        fig, ax = plt.subplots()
+        ax.imshow(wc, interpolation="bilinear")
+        ax.axis("off")
+        st.pyplot(fig, use_container_width=True)
+
 
     st.write("### Reviews")
 
