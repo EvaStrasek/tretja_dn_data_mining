@@ -50,7 +50,7 @@ def month_label(dt: pd.Timestamp) -> str:
 @st.cache_resource(show_spinner=False)
 def get_sentiment_pipeline():
     # Model example requested by assignment
-    return pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+    return pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment-latest")
 
 
 def run_sentiment(texts: list[str]) -> pd.DataFrame:
@@ -86,6 +86,8 @@ if section == "Products":
 
         show_cols = [c for c in ["title", "price", "url"] if c in df_unique.columns]
         st.caption(f"Showing unique products by title: {len(df_unique)} (from {len(df)} product pages)")
+        df_display = df.copy()
+        df_display.insert(0, "No.", range(1, len(df_display) + 1))
         st.dataframe(df_unique[show_cols], use_container_width=True)
 
 elif section == "Testimonials":
@@ -95,6 +97,8 @@ elif section == "Testimonials":
     if df.empty:
         st.info("No testimonials loaded yet. Click 'Scrape / Refresh data' in the sidebar.")
     else:
+        df_display = df.copy()
+        df_display.insert(0, "No.", range(1, len(df_display) + 1))
         st.dataframe(df, use_container_width=True)
 
 else:
@@ -105,10 +109,27 @@ else:
         st.info("No reviews loaded yet. Click 'Scrape / Refresh data' in the sidebar.")
         st.stop()
 
+    prod = load_csv("products.csv")
+    if not prod.empty and "url" in prod.columns:
+        prod["product_id"] = (
+            prod["url"]
+            .str.extract(r"/product/(\d+)", expand=False)
+            .astype(float)
+            .astype("Int64")
+        )
+
     # Parse date
     df["date"] = pd.to_datetime(df.get("date"), errors="coerce")
     df = df.dropna(subset=["date"])
     df = df[df["date"].dt.year == 2023].copy()
+
+    if not prod.empty and "product_id" in df.columns and "product_id" in prod.columns:
+        df = df.merge(
+            prod[["product_id", "title"]].dropna(),
+            on="product_id",
+            how="left",
+        )
+        df = df.rename(columns={"title": "product_title"})
 
     if df.empty:
         st.warning("No reviews from 2023 found in reviews.csv.")
@@ -118,7 +139,11 @@ else:
     months = pd.date_range("2023-01-01", "2023-12-01", freq="MS")
     month_labels = [month_label(m) for m in months]
 
-    selected_label = st.select_slider("Select month (2023)", options=month_labels, value=month_labels[0])
+    selected_label = st.select_slider(
+        "Select month (2023)",
+        options=month_labels,
+        value=month_labels[0],
+    )
     selected_month = months[month_labels.index(selected_label)]
 
     start = selected_month
@@ -132,17 +157,31 @@ else:
         st.info("No reviews in the selected month.")
         st.stop()
 
-    # Sentiment analysis (cache results per month for speed)
+    # Sentiment analysis
     with st.spinner("Running sentiment analysis..."):
         sentiments = run_sentiment(df_m["text"].astype(str).tolist())
 
     df_out = df_m.reset_index(drop=True).join(sentiments)
 
-    # Visualization: counts + avg confidence
-    counts = df_out["sentiment"].value_counts().rename_axis("sentiment").reset_index(name="count")
-    avg_conf = df_out.groupby("sentiment")["confidence"].mean().reset_index()
+    # >>> DODANO: deduplikacija po product_title + date + text
+    if "product_title" in df_out.columns:
+        df_out = df_out.drop_duplicates(
+            subset=["product_title", "date", "text", "rating"]
+        )
 
-    # Merge for display
+    # Visualization: counts + avg confidence
+    counts = (
+        df_out["sentiment"]
+        .value_counts()
+        .rename_axis("sentiment")
+        .reset_index(name="count")
+    )
+    avg_conf = (
+        df_out.groupby("sentiment")["confidence"]
+        .mean()
+        .reset_index()
+    )
+
     summary = pd.merge(counts, avg_conf, on="sentiment", how="left")
     summary["confidence"] = summary["confidence"].round(3)
 
@@ -156,8 +195,19 @@ else:
     st.bar_chart(summary.set_index("sentiment")["confidence"])
 
     st.write("### Reviews")
-    show_cols = [c for c in ["date", "product_id", "rating", "text", "sentiment", "confidence"] if c in df_out.columns]
-    df_display = df.copy()
+
+    show_cols = [
+        c for c in
+        ["date", "product_title", "rating", "text", "sentiment", "confidence"]
+        if c in df_out.columns
+    ]
+
+    df_display = (
+        df_out[show_cols]
+        .sort_values("date")
+        .reset_index(drop=True)
+    )
     df_display.insert(0, "No.", range(1, len(df_display) + 1))
 
     st.dataframe(df_display, use_container_width=True)
+
