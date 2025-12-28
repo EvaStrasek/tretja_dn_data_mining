@@ -4,7 +4,6 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-from transformers import pipeline
 
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
@@ -39,36 +38,87 @@ if st.sidebar.button("Scrape / Refresh data"):
 # -------------------------
 # Helpers
 # -------------------------
-def load_csv(name: str) -> pd.DataFrame:
-    path = DATA_DIR / name
+@st.cache_data(show_spinner=False)
+def load_csv_cached(path_str: str) -> pd.DataFrame:
+    path = Path(path_str)
     if not path.exists():
         return pd.DataFrame()
     return pd.read_csv(path)
+
+
+def load_csv(name: str) -> pd.DataFrame:
+    return load_csv_cached(str(DATA_DIR / name))
 
 
 def month_label(dt: pd.Timestamp) -> str:
     return dt.strftime("%b %Y")
 
 
-@st.cache_resource(show_spinner=False)
-def get_sentiment_pipeline():
-    # Model example requested by assignment
-    return pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment-latest")
+@st.cache_resource(show_spinner=True)
+def get_sentiment_pipeline(model_name: str):
+    """
+    Hugging Face Transformers pipeline (required by assignment).
+    Lazy-imports transformers + torch to reduce startup memory.
+    """
+    # Lazy imports to avoid loading torch/transformers at app startup
+    import os
+    os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+
+    import torch
+    from transformers import pipeline
+
+    # Small, common sentiment model:
+    # distilbert-base-uncased-finetuned-sst-2-english
+    # (you can swap for another HF sentiment model if allowed)
+    clf = pipeline(
+        "sentiment-analysis",
+        model=model_name,
+        device=-1,  # CPU
+    )
+
+    # Optional: reduce CPU threads (can help a bit with overhead)
+    try:
+        torch.set_num_threads(1)
+    except Exception:
+        pass
+
+    return clf
 
 
-def run_sentiment(texts: list[str]) -> pd.DataFrame:
+def run_sentiment(texts: list[str], model_name: str, batch_size: int = 8, max_length: int = 128) -> pd.DataFrame:
     """
-    Returns dataframe with columns: label (Positive/Negative), score (0..1)
+    Classify every review as Positive/Negative using transformers pipeline.
+    Returns dataframe with columns: sentiment, confidence
     """
-    nlp = get_sentiment_pipeline()
-    outputs = nlp(texts, truncation=True)
+    nlp = get_sentiment_pipeline(model_name)
+
     rows = []
-    for out in outputs:
-        label = out.get("label", "")
-        score = float(out.get("score", 0.0))
-        # Normalize label names to Positive/Negative
-        label_norm = "Positive" if label.upper().startswith("POS") else "Negative"
-        rows.append({"sentiment": label_norm, "confidence": score})
+    # Process in batches to avoid spikes
+    for i in range(0, len(texts), batch_size):
+        chunk = [str(t) for t in texts[i:i + batch_size]]
+
+        outputs = nlp(
+            chunk,
+            truncation=True,
+            max_length=max_length,
+        )
+
+        for out in outputs:
+            label = str(out.get("label", "")).upper()
+            score = float(out.get("score", 0.0))
+
+            # Standardize to Positive/Negative
+            if label.startswith("POS"):
+                label_norm = "Positive"
+            elif label.startswith("NEG"):
+                label_norm = "Negative"
+            else:
+                # fallback (some models use LABEL_0/LABEL_1)
+                # SST-2 is usually NEGATIVE/POSITIVE anyway
+                label_norm = "Positive" if "1" in label else "Negative"
+
+            rows.append({"sentiment": label_norm, "confidence": score})
+
     return pd.DataFrame(rows)
 
 
@@ -82,15 +132,12 @@ if section == "Products":
     if df.empty:
         st.info("No products loaded yet. Click 'Scrape / Refresh data' in the sidebar.")
     else:
-        # Keep unique products by title (what you asked for)
         if "product_id" in df.columns:
             df = df.sort_values("product_id")
         df_unique = df.drop_duplicates(subset=["title"], keep="first")
 
         show_cols = [c for c in ["title", "price", "url"] if c in df_unique.columns]
         st.caption(f"Showing unique products by title: {len(df_unique)} (from {len(df)} product pages)")
-        df_display = df.copy()
-        df_display.insert(0, "No.", range(1, len(df_display) + 1))
         st.dataframe(df_unique[show_cols], use_container_width=True)
 
 elif section == "Testimonials":
@@ -102,7 +149,7 @@ elif section == "Testimonials":
     else:
         df_display = df.copy()
         df_display.insert(0, "No.", range(1, len(df_display) + 1))
-        st.dataframe(df, use_container_width=True)
+        st.dataframe(df_display, use_container_width=True)
 
 else:
     st.subheader("Reviews (2023)")
@@ -121,7 +168,6 @@ else:
             .astype("Int64")
         )
 
-    # Parse date
     df["date"] = pd.to_datetime(df.get("date"), errors="coerce")
     df = df.dropna(subset=["date"])
     df = df[df["date"].dt.year == 2023].copy()
@@ -153,26 +199,58 @@ else:
     end = selected_month + pd.offsets.MonthBegin(1)
 
     df_m = df[(df["date"] >= start) & (df["date"] < end)].copy()
-
     st.caption(f"Reviews in {selected_label}: {len(df_m)}")
 
     if df_m.empty:
         st.info("No reviews in the selected month.")
         st.stop()
 
-    # Sentiment analysis
-    with st.spinner("Running sentiment analysis..."):
-        sentiments = run_sentiment(df_m["text"].astype(str).tolist())
+    # Controls for sentiment (so it doesn't run on every rerun)
+    st.write("### Sentiment Analysis (Hugging Face Transformers)")
+
+    model_name = st.selectbox(
+        "Model",
+        options=[
+            "distilbert-base-uncased-finetuned-sst-2-english",
+            # If your assignment allows other HF sentiment models, add them here
+        ],
+        index=0,
+    )
+    batch_size = st.slider("Batch size", min_value=1, max_value=32, value=8, step=1)
+    max_len = st.slider("Max token length (truncation)", min_value=32, max_value=256, value=128, step=8)
+
+    run_now = st.button("Run sentiment for selected month")
+
+    if "sentiment_cache" not in st.session_state:
+        st.session_state["sentiment_cache"] = {}
+
+    cache_key = (selected_label, model_name, batch_size, max_len)
+
+    if run_now:
+        with st.spinner("Running sentiment analysis..."):
+            sentiments = run_sentiment(
+                df_m["text"].astype(str).tolist(),
+                model_name=model_name,
+                batch_size=batch_size,
+                max_length=max_len,
+            )
+        st.session_state["sentiment_cache"][cache_key] = sentiments
+
+    sentiments = st.session_state["sentiment_cache"].get(cache_key)
+
+    if sentiments is None:
+        st.info("Click **Run sentiment for selected month** to compute sentiment.")
+        st.stop()
 
     df_out = df_m.reset_index(drop=True).join(sentiments)
 
-    # >>> DODANO: deduplikacija po product_title + date + text
+    # Deduplication
     if "product_title" in df_out.columns:
-        df_out = df_out.drop_duplicates(
-            subset=["product_title", "date", "text", "rating"]
-        )
+        subset_cols = [c for c in ["product_title", "date", "text", "rating"] if c in df_out.columns]
+        if subset_cols:
+            df_out = df_out.drop_duplicates(subset=subset_cols)
 
-    # Visualization: counts + avg confidence
+    # Summary tables/plots
     counts = (
         df_out["sentiment"]
         .value_counts()
@@ -197,9 +275,8 @@ else:
     st.write("### Average confidence by sentiment")
     st.bar_chart(summary.set_index("sentiment")["confidence"])
 
+    # Wordcloud
     st.write("### Word Cloud (selected month)")
-
-    # Join all review texts for the selected month
     text_blob = " ".join(df_out["text"].astype(str).tolist()).strip()
 
     if not text_blob:
@@ -209,7 +286,7 @@ else:
             width=800,
             height=400,
             background_color="white",
-            stopwords=set(STOPWORDS)  # basic English stopwords
+            stopwords=set(STOPWORDS),
         ).generate(text_blob)
 
         fig, ax = plt.subplots()
@@ -217,12 +294,10 @@ else:
         ax.axis("off")
         st.pyplot(fig, use_container_width=True)
 
-
+    # Reviews table
     st.write("### Reviews")
-
     show_cols = [
-        c for c in
-        ["date", "product_title", "rating", "text", "sentiment", "confidence"]
+        c for c in ["date", "product_title", "rating", "text", "sentiment", "confidence"]
         if c in df_out.columns
     ]
 
@@ -232,6 +307,4 @@ else:
         .reset_index(drop=True)
     )
     df_display.insert(0, "No.", range(1, len(df_display) + 1))
-
     st.dataframe(df_display, use_container_width=True)
-
