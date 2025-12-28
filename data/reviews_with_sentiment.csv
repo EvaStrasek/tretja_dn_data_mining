@@ -1,0 +1,45 @@
+product_id,id,date,rating,text,page,sentiment,confidence
+2,dark-red-potion-1,2023-02-12,4,The cherry cola flavor is very appealing. Provides a good energy boost for gaming!,1,Positive,0.9998854398727417
+2,dark-red-potion-2,2023-03-14,5,"Definitely helped me stay focused during my long gaming nights. Plus, the bottle design is pretty cool.",1,Positive,0.999826967716217
+2,dark-red-potion-3,2023-04-05,5,"Great taste, and the energy kick is awesome. Feels just like a strength potion.",1,Positive,0.9998582601547241
+2,dark-red-potion-4,2023-05-12,5,The cherry cola flavor is a win. Keeps me energized and focused.,1,Positive,0.9998745918273926
+3,teal-potion-1,2023-02-12,5,The mint and citrus blend is very refreshing. And the bottle design is great too!,1,Positive,0.999884843826294
+3,teal-potion-2,2023-03-14,4,"I love how it gives me the energy I need for my gaming sessions. Plus, no sugar crash.",1,Positive,0.9997815489768982
+3,teal-potion-3,2023-04-07,5,Really helps me focus during intense gaming marathons. The teal color is a nice touch.,1,Positive,0.9998599290847778
+3,teal-potion-4,2023-05-18,5,Unique flavor and great energy boost. It's the perfect gamer's drink!,1,Positive,0.9998904466629028
+4,red-potion-1,2023-02-10,5,The berry flavor is intense and delicious. Great for keeping me focused during my gaming sessions.,1,Positive,0.9998863935470581
+4,red-potion-2,2023-03-20,5,"Not only does it look cool, but it tastes great and gives a good energy boost!",1,Positive,0.9998849630355835
+4,red-potion-3,2023-04-09,4,It's like a health potion for gamers! The energy boost is spot on.,1,Positive,0.99863201379776
+4,red-potion-4,2023-05-17,5,Good flavor and keeps me energized. The bottle design is really fun.,1,Positive,0.999889612197876
+5,blue-energy-potion-1,2023-01-15,4,The design is just epic! And the energy boost is real.,1,Positive,0.9998830556869507
+5,blue-energy-potion-2,2023-02-20,5,Perfect for long gaming nights. Love the taste and the cool bottle design.,1,Positive,0.9998824596405029
+5,blue-energy-potion-3,2023-03-10,5,"Finally, an energy drink for gamers! It's just like a mana potion.",1,Negative,0.8313156962394714
+5,blue-energy-potion-4,2023-04-01,4,Great taste and doesn't give me a crash afterwards.,1,Positive,0.9944359064102173
+5,blue-energy-potion-5,2023-04-25,5,Really enjoyed the citrus flavor and the energy boost it gives.,1,Positive,0.9998840093612671
+6,dragon-potion-1,2023-02-18,5,"The tropical flavor is really good, and the energy kick is powerful.",1,Positive,0.9998849630355835
+6,dragon-potion-2,2023-03-15,5,Just what I need for long gaming sessions. Great flavor and energy boost.,1,Positive,0.9998794794082642
+6,dragon-potion-3,2023-04-11,5,This potion is a game changer. Love the energy boost and the flavor.,1,Positive,0.9998190999031067
+6,dragon-potion-4,2023-05-16,4,Excellent energy drink for gamers. The tropical flavor is refreshing.,1,Positive,0.9998767375946045
+12,cat-ear-beanie-5,2023-01-10,4,A must-have for cat lovers. It's adorable and keeps me warm during chilly weather.,1,Positive,0.9998546838760376
+14,dark-red-potion-1,2023-02-12,4,The cherry cola flavor is very appealing. Provides a good energy boost for gaming!,1,Positive,0.9998854398727417
+14,dark-red-potion-2,2023-03-14,5,"Definitely helped me stay focused during my long gaming nights. Plus, the bottle design is pretty cool.",1,Positive,0.999826967716217
+14,dark-red-potion-3,2023-04-05,5,"Great taste, and the energy kick is awesome. Feels just like a strength potion.",1,Positive,0.9998582601547241
+14,dark-red-potion-4,2023-05-12,5,The cherry cola flavor is a win. Keeps me energized and focused.,1,Positive,0.9998745918273926
+15,teal-potion-1,2023-02-12,5,The mint and citrus blend is very refreshing. And the bottle design is great too!,1,Positive,0.999884843826294
+15,teal-potion-2,2023-03-14,4,"I love how it gives me the energy I need for my gaming sessions. Plus, no sugar crash.",1,Positive,0.9997815489768982
+15,teal-potion-3,2023-04-07,5,Really helps me focus during intense gaming marathons. The teal color is a nice touch.,1,Positive,0.9998599290847778
+15,teal-potion-4,2023-05-18,5,Unique flavor and great energy boost. It's the perfect gamer's drink!,1,Positive,0.9998904466629028
+16,red-potion-1,2023-02-10,5,The berry flavor is intense and delicious. Great for keeping me focused during my gaming sessions.,1,Positive,0.9998863935470581
+16,red-potion-2,2023-03-20,5,"Not only does it look cool, but it tastes great and gives a good energy boost!",1,Positive,0.9998849630355835
+16,red-potion-3,2023-04-09,4,It's like a health potion for gamers! The energy boost is spot on.,1,Positive,0.99863201379776
+16,red-potion-4,2023-05-17,5,Good flavor and keeps me energized. The bottle design is really fun.,1,Positive,0.999889612197876
+17,blue-energy-potion-1,2023-01-15,4,The design is just epic! And the energy boost is real.,1,Positive,0.9998830556869507
+17,blue-energy-potion-2,2023-02-20,5,Perfect for long gaming nights. Love the taste and the cool bottle design.,1,Positive,0.9998824596405029
+17,blue-energy-potion-3,2023-03-10,5,"Finally, an energy drink for gamers! It's just like a mana potion.",1,Negative,0.8313156962394714
+17,blue-energy-potion-4,2023-04-01,4,Great taste and doesn't give me a crash afterwards.,1,Positive,0.9944359064102173
+17,blue-energy-potion-5,2023-04-25,5,Really enjoyed the citrus flavor and the energy boost it gives.,1,Positive,0.9998840093612671
+18,dragon-potion-1,2023-02-18,5,"The tropical flavor is really good, and the energy kick is powerful.",1,Positive,0.9998849630355835
+18,dragon-potion-2,2023-03-15,5,Just what I need for long gaming sessions. Great flavor and energy boost.,1,Positive,0.9998794794082642
+18,dragon-potion-3,2023-04-11,5,This potion is a game changer. Love the energy boost and the flavor.,1,Positive,0.9998190999031067
+18,dragon-potion-4,2023-05-16,4,Excellent energy drink for gamers. The tropical flavor is refreshing.,1,Positive,0.9998767375946045
+24,cat-ear-beanie-5,2023-01-10,4,A must-have for cat lovers. It's adorable and keeps me warm during chilly weather.,1,Positive,0.9998546838760376
